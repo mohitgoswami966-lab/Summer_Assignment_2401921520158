@@ -27,7 +27,7 @@ public:
                 for(int i=erow;i>=srow;i--){
                     ans.push_back(matrix[i][scol]); 
                 }
-                ecol--;
+                scol++;
             }
         }
         return ans;
