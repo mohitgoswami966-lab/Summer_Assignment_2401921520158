@@ -1,0 +1,21 @@
+class Solution {
+private:
+    void genepara(int open, int close, int n,string current,vector<string>& result){
+        if(current.size()==2*n){
+            result.push_back(current);
+            return;
+        }
+        if(open<n){
+            genepara(open+1,close,n,current+"(",result);
+        }
+        if(close<open){
+            genepara(open,close+1,n,current+")",result);
+        }
+    }
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> result;
+        genepara(0,0,n,"",result);
+        return result;
+    }
+};
