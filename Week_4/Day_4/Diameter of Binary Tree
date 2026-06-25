@@ -1,0 +1,21 @@
+class Solution {
+private:
+    pair<int,int> fast(TreeNode* root){
+        if(root==NULL){
+            return {0,0};
+        }
+        pair<int,int> leftAns=fast(root->left);
+        pair<int,int> rightAns=fast(root->right);
+        int op1=leftAns.first;
+        int op2=rightAns.first;
+        int op3=leftAns.second + rightAns.second;
+        pair<int,int> ans;
+        ans.first=max(op1,max(op2,op3));
+        ans.second=max(leftAns.second,rightAns.second)+1;
+        return ans;
+    }
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        return fast(root).first;
+    }
+};
